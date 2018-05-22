@@ -12,6 +12,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateTimerLable()
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -19,7 +20,15 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    var seconds: Int = 0
+    
+    func updateTimerLable() {
+        timerLabel.text = timeString(time: TimeInterval(seconds))
+    }
+    
+    @IBOutlet weak var timerLabel: UILabel!
+    
     @IBOutlet weak var startButton: UIButton!
     
     @IBOutlet weak var stopButton: UIButton!
