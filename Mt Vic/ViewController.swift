@@ -13,6 +13,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateTimerLable()
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (timer) in
+            self.seconds = self.seconds + 1
+            self.updateTimerLable()
+        })
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -21,7 +25,9 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    var seconds: Int = 0
+    var timer = Timer()
+    
+    var seconds = 0
     
     func updateTimerLable() {
         timerLabel.text = timeString(time: TimeInterval(seconds))
