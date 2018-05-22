@@ -20,6 +20,19 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    @IBOutlet weak var startButton: UIButton!
+    
+    @IBOutlet weak var stopButton: UIButton!
+    
+    @IBAction func startTimer(_ sender: UIButton) {
+        stopButton.isEnabled = true
+        startButton.isEnabled = false
+    }
+    
+    @IBAction func stopTimer(_ sender: UIButton) {
+        stopButton.isEnabled = false
+        startButton.isEnabled = true
+    }
+    
 }
 
