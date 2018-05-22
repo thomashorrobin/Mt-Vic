@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import CoreData
 
 class ViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         updateTimerLable()
@@ -22,6 +23,8 @@ class ViewController: UIViewController {
     }
     
     var timer = Timer()
+    
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     var seconds = 0
     
@@ -50,6 +53,17 @@ class ViewController: UIViewController {
         timer.invalidate()
         stopButton.isEnabled = false
         startButton.isEnabled = true
+        let context = appDelegate.persistentContainer.viewContext
+        let entity = NSEntityDescription.entity(forEntityName: "UpTime", in: context)
+        let newUpTime = NSManagedObject(entity: entity!, insertInto: context)
+        newUpTime.setValue(UUID(), forKey: "id")
+        newUpTime.setValue(seconds, forKey: "durationSeconds")
+        newUpTime.setValue(Date(), forKey: "endTime")
+        do {
+            try context.save()
+        } catch {
+            print("Failed saving")
+        }
     }
     
 }
