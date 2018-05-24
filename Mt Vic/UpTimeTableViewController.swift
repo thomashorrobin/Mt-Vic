@@ -26,7 +26,6 @@ class UpTimeTableViewController: UITableViewController {
             let result = try context.fetch(request)
             for data in result as! [NSManagedObject] {
                 upTimes.append(data)
-                print(data.value(forKey: "id") as! UUID)
             }
             
         } catch {

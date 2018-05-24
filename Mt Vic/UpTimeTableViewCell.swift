@@ -25,7 +25,6 @@ class UpTimeTableViewCell: UITableViewCell {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
         dateFormatter.timeStyle = .short
-        print(dateFormatter.string(from: date))
         dateFormatter.locale = Locale(identifier: "en_NZ")
         endTimeLabel.text = "Ending: \(dateFormatter.string(from: date))"
     }
